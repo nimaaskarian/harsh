@@ -42,8 +42,8 @@ func init() {
 		case "auto":
 			if color.Enable {
 				fi, _ := os.Stdout.Stat()
-				stdoutNotPiped := (fi.Mode() & os.ModeCharDevice) == 0
-				color.Enable = stdoutNotPiped
+				stdoutNotPiped := (fi.Mode() & os.ModeCharDevice) != 0
+				color.Enable = stdoutNotPiped;
 			}
 		default:
 			fmt.Fprintf(os.Stderr, `invalid color option "%s". should be "never", "always" or "auto"`+"\n", colorOption)
