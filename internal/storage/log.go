@@ -138,41 +138,48 @@ func parseLogLine(line string, lineCount int, header map[string]int, entries Ent
 			// Discards comments from read record read as result[header[HeaderComment]]
 			result := strings.Split(line, " : ")
 
-			// Check for minimum required fields (date, habit, result)
+			// Warn for entries that have less than header's count
 			if len(result) != len(header) {
 				fmt.Printf("Warning: expected (%d) fields, found (%d) at line %d\n", len(header), len(result), lineCount)
-				return
 			}
 
-			cd, err := civil.ParseDate(result[header[HeaderDate]])
-			if err != nil {
-				fmt.Printf("Warning: Skipping log entry with invalid date at line %d: %s\n", lineCount, result[header[HeaderDate]])
-				return
+			var cd civil.Date
+			if i, ok := header[HeaderDate]; ok && i < len(result) {
+				var err error
+				cd, err = civil.ParseDate(result[i])
+				if err != nil {
+					fmt.Printf("Warning: Skipping log entry with invalid date at line %d: %s\n", lineCount, result[i])
+					return
+				}
 			}
 
-			// Validate habit name is not empty
-			if strings.TrimSpace(result[header[HeaderHabit]]) == "" {
+			if i, ok := header[HeaderHabit]; !ok || i >= len(result) || strings.TrimSpace(result[i]) == "" {
+				// Validate habit name is not empty
 				fmt.Printf("Warning: Skipping log entry with empty habit name at line %d\n", lineCount)
 				return
 			}
 
 			// Validate result is y, n, or s
-			result[header[HeaderStatus]] = strings.TrimSpace(result[header[HeaderStatus]])
-			if result[header[HeaderStatus]] != "y" && result[header[HeaderStatus]] != "n" && result[2] != "s" {
-				fmt.Printf("Warning: Skipping log entry with invalid result '%s' at line %d (expected y/n/s)\n", result[header[HeaderStatus]], lineCount)
-				return
+			if i, ok := header[HeaderStatus]; ok && i < len(result) {
+				result[i] = strings.TrimSpace(result[i])
+				if result[i] != "y" && result[i] != "n" && result[i] != "s" {
+					fmt.Printf("Warning: Skipping log entry with invalid result '%s' at line %d (expected y/n/s)\n", result[i], lineCount)
+					return
+				}
 			}
+
 			var amount float64
-			if len(result) <= header[HeaderAmount] && result[header[HeaderAmount]] != "" {
-					amount, err = strconv.ParseFloat(result[header[HeaderAmount]], 64)
-					if err != nil {
-						fmt.Printf("Warning: Invalid amount '%s' at line %d, using 0.0\n", result[header[HeaderAmount]], lineCount)
-						amount = 0.0
-					}
+			if  i, ok := header[HeaderAmount]; ok && i < len(result) && result[i] != "" {
+				var err error
+				amount, err = strconv.ParseFloat(result[i], 64)
+				if err != nil {
+					fmt.Printf("Warning: Invalid amount '%s' at line %d, using %f\n", result[i], lineCount, amount)
+				}
 			}
+
 			var comment string
-			if len(result) <= header[HeaderComment] {
-				comment = result[header[HeaderComment]]
+			if i, ok := header[HeaderComment]; ok && i < len(result) {
+				comment = result[i]
 			}
 			entries[DailyHabit{Day: cd, Habit: result[header[HeaderHabit]]}] = Outcome{Result: result[header[HeaderStatus]], Comment: comment, Amount: amount}
 		}
