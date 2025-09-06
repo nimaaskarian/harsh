@@ -11,7 +11,7 @@ import (
 
 var (
 	colorOption string
-	RootCmd     = &cobra.Command{
+	RootCmd = &cobra.Command{
 		Use:     "harsh",
 		Short:   "habit tracking for geeks",
 		Long:    "A simple, minimalist CLI for tracking and understanding habits.",

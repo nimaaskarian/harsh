@@ -23,7 +23,8 @@ type Habit struct {
 	FirstRecord civil.Date
 }
 
-const DEFAULT_HABITS = `# This is your habits file.
+const DEFAULT_HABITS = 
+`# This is your habits file.
 # It tells harsh what to track and how frequently.
 # 1 means daily, 7 (or 1w) means weekly, 14 every two weeks.
 # You can also track targets within a set number of days.

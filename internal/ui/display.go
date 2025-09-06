@@ -200,7 +200,6 @@ func GetTodos(habits []*storage.Habit, entries *storage.Entries, to civil.Date, 
 						}
 					}
 				}
-
 				// Edge case for 0 day lookback onboard onboards and does not complete at onboard time
 				if habit.FirstRecord == noFirstRecord && dt != to {
 					delete(dayHabits, habit.Name)

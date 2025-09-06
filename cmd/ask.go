@@ -20,7 +20,6 @@ var askCmd = &cobra.Command{
 		if len(args) > 0 {
 			habitFragment = args[0]
 		}
-
 		input := ui.NewInput(!color.Enable)
 		input.AskHabits(
 			harsh.GetHabits(),
