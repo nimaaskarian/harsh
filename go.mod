@@ -1,4 +1,4 @@
-module github.com/wakatara/harsh
+module github.com/nimaaskarian/harsh
 
 go 1.25.1
 

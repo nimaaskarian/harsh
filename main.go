@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 
-	"github.com/wakatara/harsh/cmd"
+	"github.com/nimaaskarian/harsh/cmd"
 )
 
 func main() {

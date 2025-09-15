@@ -9,7 +9,7 @@ import (
 	"time"
 
 	"cloud.google.com/go/civil"
-	"github.com/wakatara/harsh/internal/storage"
+	"github.com/nimaaskarian/harsh/internal/storage"
 )
 
 func TestReadOnlyConfigDirectory(t *testing.T) {

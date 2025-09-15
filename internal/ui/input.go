@@ -9,8 +9,8 @@ import (
 	"time"
 
 	"cloud.google.com/go/civil"
-	"github.com/wakatara/harsh/internal/graph"
-	"github.com/wakatara/harsh/internal/storage"
+	"github.com/nimaaskarian/harsh/internal/graph"
+	"github.com/nimaaskarian/harsh/internal/storage"
 )
 
 // Input handles user input operations

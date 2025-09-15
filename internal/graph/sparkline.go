@@ -5,7 +5,7 @@ import (
 	"time"
 
 	"cloud.google.com/go/civil"
-	"github.com/wakatara/harsh/internal/storage"
+	"github.com/nimaaskarian/harsh/internal/storage"
 )
 
 // BuildSpark creates sparkline and calendar line for visualization

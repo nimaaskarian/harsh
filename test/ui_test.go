@@ -7,8 +7,8 @@ import (
 	"testing"
 
 	"cloud.google.com/go/civil"
-	"github.com/wakatara/harsh/internal/storage"
-	"github.com/wakatara/harsh/internal/ui"
+	"github.com/nimaaskarian/harsh/internal/storage"
+	"github.com/nimaaskarian/harsh/internal/ui"
 )
 
 func TestColorManager(t *testing.T) {

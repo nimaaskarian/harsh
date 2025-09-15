@@ -5,7 +5,7 @@ import (
 
 	"github.com/gookit/color"
 	"github.com/spf13/cobra"
-	"github.com/wakatara/harsh/internal/ui"
+	"github.com/nimaaskarian/harsh/internal/ui"
 )
 
 var askCmd = &cobra.Command{

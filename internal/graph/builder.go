@@ -6,7 +6,7 @@ import (
 	"time"
 
 	"cloud.google.com/go/civil"
-	"github.com/wakatara/harsh/internal/storage"
+	"github.com/nimaaskarian/harsh/internal/storage"
 )
 
 // BuildGraph creates a consistency graph for a single habit

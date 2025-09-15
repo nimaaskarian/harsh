@@ -284,7 +284,7 @@ func welcome(configDir string) {
 	fmt.Println("Running   harsh todo    will show you undone habits for today.")
 	fmt.Println("Running   harsh log     will show you a consistency graph of your efforts.")
 	fmt.Println("                        (the graph gets way cooler looking over time.")
-	fmt.Println("For more depth, you can read https://github.com/wakatara/harsh#usage")
+	fmt.Println("For more depth, you can read https://github.com/nimaaskarian/harsh#usage")
 	fmt.Println("")
 	fmt.Println("Happy tracking! I genuinely hope this helps you with your goals. Buena suerte!")
 	os.Exit(0)

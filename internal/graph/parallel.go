@@ -4,7 +4,7 @@ import (
 	"runtime"
 	"sync"
 
-	"github.com/wakatara/harsh/internal/storage"
+	"github.com/nimaaskarian/harsh/internal/storage"
 )
 
 // HabitGraphResult holds the result of building a graph for a single habit

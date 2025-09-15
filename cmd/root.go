@@ -6,7 +6,7 @@ import (
 
 	"github.com/gookit/color"
 	"github.com/spf13/cobra"
-	"github.com/wakatara/harsh/internal"
+	"github.com/nimaaskarian/harsh/internal"
 )
 
 var (
