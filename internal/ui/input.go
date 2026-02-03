@@ -54,7 +54,7 @@ func (i *Input) Onboard() int {
 }
 
 // AskHabits handles the interactive habit asking process
-func (i *Input) AskHabits(habits []*storage.Habit, log *storage.Log, repository storage.Repository, maxHabitNameLength int, countBack int, check string) {
+func (i *Input) AskHabits(habits []*storage.Habit, log *storage.Log, repository storage.Repository, maxHabitNameLength int, countBack int, check string, heading string) {
 	now := civil.DateOf(time.Now())
 	to := now
 	from := to.AddDays(-countBack - 40)
@@ -97,7 +97,7 @@ func (i *Input) AskHabits(habits []*storage.Habit, log *storage.Log, repository 
 		filteredHabits = habits
 	}
 
-	dayHabits := GetTodos(habits, &log.Entries, to, checkBackDays)
+	dayHabits := GetTodos(habits, &log.Entries, to, checkBackDays, heading)
 
 	if len(filteredHabits) == 0 {
 		fmt.Println("You have no habits that contain that string")

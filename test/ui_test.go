@@ -49,7 +49,7 @@ func TestGetTodos(t *testing.T) {
 		// Test3 is missing (should be in todos)
 	}
 
-	todos := ui.GetTodos(habits, entries, civil.Date{Year: 2025, Month: 1, Day: 15}, 1)
+	todos := ui.GetTodos(habits, entries, civil.Date{Year: 2025, Month: 1, Day: 15}, 1, "")
 
 	// Should have entries for the day
 	if len(todos) == 0 {
@@ -71,7 +71,7 @@ func TestGetTodos(t *testing.T) {
 	}
 
 	// Test with onboarding (0 days back)
-	onboardTodos := ui.GetTodos(habits, entries, civil.Date{Year: 2025, Month: 1, Day: 15}, 0)
+	onboardTodos := ui.GetTodos(habits, entries, civil.Date{Year: 2025, Month: 1, Day: 15}, 0, "")
 	if len(onboardTodos) == 0 {
 		t.Error("Should have onboarding todos")
 	}
@@ -226,7 +226,7 @@ func TestDisplayShowTodos(t *testing.T) {
 	os.Stdout = w
 
 	display := ui.NewDisplay(true) // no color for testing
-	display.ShowTodos(habits, entries, 20)
+	display.ShowTodos(habits, entries, 20, false)
 
 	// Restore stdout
 	w.Close()
